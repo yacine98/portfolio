@@ -3,7 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
 
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-   target: 'static',
+  target: 'static',
   ssr: false,
   generate: {
     fallback: true
@@ -14,7 +14,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s',
-    title: 'PLATEFORME DE GESTION DES INSCRIPTIONS',
+    title: 'Portfolio Yacine Dia',
     htmlAttrs: {
       lang: 'fr'
     },
@@ -32,7 +32,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/style.css',
-    "@/layouts/global.css",
+
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -63,7 +63,6 @@ export default {
   ],
 
   axios: {
-    // baseURL: 'https://msas.ip3dev.com/api-mrv-ci/public/api',
     baseURL: 'https://localhost.com'
   },
 
@@ -137,8 +136,6 @@ export default {
   },
 
   env: {
-    // baseUrl: 'https://msas.ip3dev.com/api-mrv-ci/public/api',
-    //  siteUrl: 'https://msas.ip3dev.com/api-mrv-ci/public/storage/',
     baseURL: 'https://localhost.com',
     siteUrl: 'https://localhost.com'
 

@@ -2,41 +2,10 @@ import layout from '@/static/data/layout'
 import layoutadmin from '@/static/data/layoutadmin'
 export default function ({ store, redirect }, inject) {
 
-    const getToken = () => {
-        return localStorage.getItem('mrvciToken')
-    }
+   
 
-   const getUser = () => {
-  const storedUser = localStorage.getItem('user');
-  return storedUser ? JSON.parse(storedUser) : null;
-};
-
- const isLogged = () => {
-  const user = localStorage.getItem('user');
-  return !!user; // renvoie true si l'utilisateur est connecté
-}
-
-    const getUserRoles = () => {
-        return getUser()?.roles
-    }
-
-    const getUserPermissions = () => {
-        let permissions = []
-        getUserRoles()?.map((role) => { permissions = [...permissions, ...role.permissions] })
-        let allPermissions = removeDuplicates(permissions)
-        return allPermissions
-    }
-    //Cette fonction permet de créer le menu à partir des permissions de l'utilisateur connecté
-    const getUserMenu = (array) => {
-        let layoutPrincipal = layout.menuItems
-        let menu = []
-        layoutPrincipal?.map((item) => {
-            // if (hasPermission(item.name))
-            menu = [...menu, item]
-        })
-        return menu
-    }
-    //Cette fonction permet de créer le menu à partir des permissions de l'utilisateur connecté
+ 
+    
     const getParametreMenu = (array) => {
         let layoutPrincipal = layoutadmin.menuItems
         let menu = []
@@ -58,24 +27,6 @@ export default function ({ store, redirect }, inject) {
 
         return libelles[key] || key;
     };
-
-    // const hasPermission = (permission_name) => {
-    //     let permissions = getUserPermissions()
-    //     let checkpermission = permissions?.filter(item => item.name === permission_name).length;
-    //     if (checkpermission == 1)
-    //         return true
-    //     else
-    //         return false
-    // }
-
-    // const hasRole = (role_name) => {
-    //     let roles = getUserRoles()
-    //     let checkRole = roles?.filter(item => item.name === role_name)?.length;
-    //     if (checkRole == 1)
-    //         return true
-    //     else
-    //         return false
-    // }
 
     const removeDuplicates = (array) => {
         let uniq = {};
@@ -126,26 +77,11 @@ export default function ({ store, redirect }, inject) {
             default: return slug
         }
     }
-    const loggout = async () => {
-        await localStorage.removeItem('mrvciToken')
-        await localStorage.removeItem('loggedInUser')
-        await localStorage.removeItem('layout')
-        await localStorage.removeItem('isAuthenticated')
-    }
-
-
-    inject('getUser', getUser)
-    inject('getUserPermissions', getUserPermissions)
-    inject('getUserRoles', getUserRoles)
-    // inject('hasRole', hasRole)
-    // inject('hasPermission', hasPermission)
-    inject('getToken', getToken)
-    inject('isLogged', isLogged)
-    inject('loggout', loggout)
+   
+  
     inject('removeDuplicates', removeDuplicates)
     inject('getColore', getColore)
     inject('getNameBySlug', getNameBySlug)
-    inject('getUserMenu', getUserMenu)
     inject('getParametreMenu', getParametreMenu)
     inject('getLibelleByKey', getLibelleByKey)
 }

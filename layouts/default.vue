@@ -1,16 +1,19 @@
 <template>
-  <v-app id="inspire">
-    <v-main class="">
-      <nuxt/>
-    </v-main>
-  </v-app>
+  <div>
+    <AppHeader />
+    <Nuxt />
+    <AppFooter />
+  </div>
 </template>
 
 <script>
-  import AppToolbar from '@/components/AppToolbar'
-  export default {
-    components: {
-      AppToolbar
-    }
+import AppHeader from '@/components/AppHeader.vue'
+import AppFooter from '@/components/AppFooter.vue'
+
+export default {
+  components: {
+    AppHeader,
+    AppFooter
   }
+}
 </script>
